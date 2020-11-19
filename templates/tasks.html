@@ -4,7 +4,7 @@
         <h3 class="light-blue-text text-darken-4 center-align">All Tasks</h3>
 
         <div class="row card-panel grey lighten-5">
-            <form action="url_for('search')}}" method="POST" class="col s12">
+            <form action="{{url_for('search')}}" method="POST" class="col s12">
                 <div class="row valign-wrapper center-align">
                     <div class="input-field col s12 m8">
                         <i class="fas fa-search prefix light-blue-text text-darken-4"></i>
@@ -12,9 +12,9 @@
                         <label for="query">Search Tasks</label>
                     </div>
                     <div class="col s12 m4"> 
-                        <a href="{{url_for('get_tasks')}}" class="red button text-shadow">
+                        <a href="{{url_for('get_tasks')}}" class="red button text-shadow">Reset</a>
                         <button type="submit" class="light-blue darken-1 btn text-shadow">
-                            <i class="fas fa-search left"></i>Search
+                            Search<i class="fas fa-search left"></i>
                         </button> 
                     </div>
                 </div>
@@ -23,7 +23,7 @@
 
 
 
-
+        {% if tasks|length > 0 %}   
         <ul class="collapsible">
             {% for task in tasks %}
             <li>
@@ -51,6 +51,8 @@
             </li>
             {% endfor %}
         </ul>
-        
+        {% else %}
+        <h3 class="red-text text-darken-4 center-align">No results found</h3>
+        {% endif %}
 
 {% endblock %}
